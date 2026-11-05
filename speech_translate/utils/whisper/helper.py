@@ -18,6 +18,7 @@ model_select_dict = {
     "🐌 Large V1 [10GB VRAM] (Most Accurate)": "large-v1",
     "🐌 Large V2 [10GB VRAM] (Most Accurate)": "large-v2",
     "🐌 Large V3 [10GB VRAM] (Most Accurate)": "large-v3",
+    "🏎️ Large V3 Turbo [6GB VRAM] (Fast & Accurate)": "large-v3-turbo",
 }
 model_keys = list(model_select_dict.keys())
 model_values = list(model_select_dict.values())
@@ -183,7 +184,7 @@ def get_base_filter() -> Dict:
             return json.load(f)
     except FileNotFoundError:
         logger.warning("Base filter file not found, attempting to download it")
-        filter_https = "https://raw.githubusercontent.com/Dadangdut33/Speech-Translate/" \
+        filter_https = "https://raw.githubusercontent.com/RTBGG/Speech-Translate/" \
             "master/speech_translate/assets/base_hallucination_filter.json"
         r = requests.get(filter_https, timeout=5)
         if r.status_code != 200:

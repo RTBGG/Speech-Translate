@@ -70,6 +70,30 @@ class TranslationConnection:
 TlCon = TranslationConnection(GoogleTranslator, MyMemoryTranslator)
 
 
+def _google_gtx_translate(text: List[str], from_lang: str, to_lang: str, proxies: Dict) -> List[str]:
+    """Fallback for Google Translate using the public translate_a endpoint.
+
+    deep_translator scrapes translate.google.com/m which Google often answers with a captcha
+    redirect (e.g. on VPN / shared IPs). The translate_a endpoint keeps working in those cases.
+    """
+    result = []
+    for t in text:
+        if not t.strip():
+            result.append(t)
+            continue
+        resp = requests.get(
+            "https://translate.googleapis.com/translate_a/single",
+            params={"client": "gtx", "sl": from_lang, "tl": to_lang, "dt": "t", "q": t},
+            headers={"User-Agent": "Mozilla/5.0"},
+            proxies=proxies or None,
+            timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        result.append("".join(seg[0] for seg in data[0] if seg and seg[0]))
+    return result
+
+
 def google_tl(text: List[str], from_lang: str, to_lang: str, proxies: Dict, debug_log: bool = False, **kwargs):
     """Translate Using Google Translate
 
@@ -124,8 +148,12 @@ def google_tl(text: List[str], from_lang: str, to_lang: str, proxies: Dict, debu
         if kwargs.pop("live_input", False):
             tl_kwargs["with_tqdm"] = False
 
-        result = TlCon.GoogleTranslator(source=LCODE_FROM, target=LCODE_TO,
-                                        proxies=proxies).translate_batch(text, **tl_kwargs)
+        try:
+            result = TlCon.GoogleTranslator(source=LCODE_FROM, target=LCODE_TO,
+                                            proxies=proxies).translate_batch(text, **tl_kwargs)
+        except Exception as e:
+            logger.warning(f"deep_translator Google failed ({type(e).__name__}), using translate_a fallback")
+            result = _google_gtx_translate(text, LCODE_FROM, LCODE_TO, proxies)
         is_success = True
     except Exception as e:
         logger.exception(e)

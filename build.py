@@ -21,10 +21,6 @@ def app_version():
 # instead of the one in the python folder
 print(">> Building SpeechTranslate version", app_version())
 print(">> Environment:", get_env_name())
-# run build_patch.py
-print(">> Running build_patch.py")
-os.system("python build_patch.py")
-print(">> Done")
 
 
 def clear_dir(_dir):
@@ -134,7 +130,7 @@ with open(f"{folder_name}/version.txt", "w", encoding="utf-8") as f:
 print(">> Creating link to repo")
 with open(f"{folder_name}/homepage.url", "w", encoding="utf-8") as f:
     f.write("[InternetShortcut]\n")
-    f.write("URL=https://github.com/Dadangdut33/Speech-Translate")
+    f.write("URL=https://github.com/RTBGG/Speech-Translate")
 
 print(">> Opening output folder")
 output_folder = os.path.abspath(folder_name)

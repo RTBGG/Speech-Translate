@@ -15,6 +15,9 @@
     <a href="https://github.com/Dadangdut33/Speech-Translate/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Dadangdut33/Speech-Translate?style=social"></a>
 </p>
 
+> [!NOTE]
+> **This is a maintained fork of [Dadangdut33/Speech-Translate](https://github.com/Dadangdut33/Speech-Translate).** Version 1.4.0 updates the stack to current libraries (PyTorch 2.11 + CUDA 12.8, openai-whisper 20250625, stable-ts 2.19, faster-whisper 1.2), adds the **Large V3 Turbo** model, and fixes several compatibility issues. Prebuilt releases of this fork are available [here](https://github.com/RTBGG/Speech-Translate/releases/latest).
+
 Speech Translate is a practical application that combines OpenAI's Whisper ASR model with free translation APIs. It serves as a versatile tool for both real-time / live speech-to-text and speech translation, allowing the user to seamlessly convert spoken language into written text. Additionally, it has the option to import and transcribe audio / video files effortlessly.
 
 Speech Translate aims to expand whisper ability by combining it with some translation APIs while also providing a simple and easy to use interface to create a more practical application. This application is also open source, so you can contribute to this project if you want to.
@@ -91,12 +94,12 @@ Speech Translate aims to expand whisper ability by combining it with some transl
 |  MacOS  |                ❌                 |            ✔️            |          ✔️           |
 |  Linux  |                ❌                 |            ✔️            |          ✔️           |
 
-\* Python 3.8 or later (3.11 is recommended) for installation as module.
+\* Python 3.11 or later (3.12 is recommended) for installation as module.
 
 - **Speaker input** only work on _windows 8 and above_ (Alternatively, you can make a loopback to capture your system audio as virtual input (like mic input) by using this guide/tool: [[Voicemeeter on Windows]](https://voicemeeter.com/)/[[YT Tutorial]](https://youtu.be/m6rp9lkiFBU) - [[pavucontrol on Ubuntu with PulseAudio]](https://wiki.ubuntu.com/record_system_sound) - [[blackhole on MacOS]](https://github.com/ExistentialAudio/BlackHole))
 - Internet connection is needed **only for translation with API & downloading models** (If you want to go fully offline, you can setup [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate) on your local machine and set it up in the [app settings](https://github.com/Dadangdut33/Speech-Translate/wiki/Options#libre-translate-setting))
 - **Recommended** to have `Segoe UI` font installed on your system for best UI experience (For OS other than windows, you can see this: [Ubuntu](https://github.com/mrbvrz/segoe-ui-linux) - [MacOS](https://github.com/tejasraman/segoe-ui-macos))
-- **Recommended** to have capable [GPU with CUDA compatibility](https://developer.nvidia.com/cuda-gpus) (prebuilt version is using CUDA 11.8) for faster result. Each whisper model has different requirements, for more information you can check it directly at the [whisper repository](https://github.com/openai/whisper).
+- **Recommended** to have capable [GPU with CUDA compatibility](https://developer.nvidia.com/cuda-gpus) (prebuilt version is using CUDA 12.8, NVIDIA driver 570 or newer) for faster result. Each whisper model has different requirements, for more information you can check it directly at the [whisper repository](https://github.com/openai/whisper).
 
 |  Size  | Parameters | Required VRAM | Relative speed |
 | :----: | :--------: | :-----------: | :------------: |
@@ -116,9 +119,9 @@ Speech Translate aims to expand whisper ability by combining it with some transl
 ## From Prebuilt Binary (.exe)
 
 > [!NOTE]  
-> The prebuilt binary is shipped with CUDA 11.8, so it will only work with GPU that has CUDA 11.8 compatibility. If your GPU is not compatible, you can try [installation as module](#as-a-module) or [from git](#From-Git) below.
+> The prebuilt binary is shipped with CUDA 12.8, so it needs an NVIDIA GPU with driver 570 or newer. If your GPU is not compatible, you can try [installation as module](#as-a-module) or [from git](#From-Git) below.
 
-1. Download the [latest release](https://github.com/Dadangdut33/Speech-Translate/releases/latest) (There are 2 versions, CPU and GPU/CUDA)
+1. Download the [latest release](https://github.com/RTBGG/Speech-Translate/releases/latest)
 2. Install/extract the downloaded file
 3. Run the program
 4. Set the settings to your liking
@@ -127,7 +130,7 @@ Speech Translate aims to expand whisper ability by combining it with some transl
 ## As A Module
 
 > [!NOTE]  
-> Use python 3.11 for best compatibility and performance
+> Use python 3.12 for best compatibility and performance
 
 > [!WARNING]  
 > You might need to have [Build tools for Visual Studio](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (or the equivalent of it on your OS) installed
@@ -136,13 +139,13 @@ To install as module, we can use pip, with the following command.
 
 - Install with **GPU (Cuda compatible)** support:
 
-  `pip install -U git+https://github.com/Dadangdut33/Speech-Translate.git --extra-index-url https://download.pytorch.org/whl/cu118`
+  `pip install -U git+https://github.com/RTBGG/Speech-Translate.git --extra-index-url https://download.pytorch.org/whl/cu128`
 
-  cu118 here means CUDA 11.8, you can change it to other version if you need to. You can check older version of pytorch [here](https://pytorch.org/get-started/previous-versions/) or [here](https://download.pytorch.org/whl/torch_stable.html).
+  cu128 here means CUDA 12.8, you can change it to other version if you need to. You can check older version of pytorch [here](https://pytorch.org/get-started/previous-versions/) or [here](https://download.pytorch.org/whl/torch_stable.html).
 
 - **CPU** only:
 
-  `pip install -U git+https://github.com/Dadangdut33/Speech-Translate.git`
+  `pip install -U git+https://github.com/RTBGG/Speech-Translate.git --extra-index-url https://download.pytorch.org/whl/cpu`
 
 You can then run the program by typing `speech-translate` in your terminal/console. Alternatively, when installing as a module, you can also clone the repo and install it locally by running `pip install -e .` in the project directory. (Don't forget to add `--extra-index-url` if you want to install with GPU support)
 

@@ -15,7 +15,6 @@ import numpy as np
 import requests
 import scipy.io.wavfile as wav
 import torch
-import torchaudio
 import webrtcvad
 from whisper.tokenizer import TO_LANGUAGE_CODE
 
@@ -377,7 +376,6 @@ def record_session(
         max_int16 = np.iinfo(np.int16).max  # bit depth of 16 bit audio (32768)
         separator = str_separator_to_html(literal_eval(quote(sj.cache["separate_with"])))
         webrtc_vad = webrtcvad.Vad(sj.cache.get(f"threshold_auto_mode_{rec_type}", 3))
-        torchaudio.set_audio_backend("soundfile")
         silero_vad, _ = torch.hub.load(repo_or_dir=dir_silero_vad, source="local", model="silero_vad", onnx=True)
         silero_vad.reset_states()
 

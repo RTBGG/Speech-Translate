@@ -190,7 +190,7 @@ class AppTray:
                 ),
                 pystray.Menu.SEPARATOR,
                 pystray.MenuItem(
-                    "Visit Repository", lambda *args: open_url("https://github.com/Dadangdut33/Speech-Translate")
+                    "Visit Repository", lambda *args: open_url("https://github.com/RTBGG/Speech-Translate")
                 ),
                 pystray.MenuItem(
                     "Read Wiki", lambda *args: open_url("https://github.com/Dadangdut33/Speech-Translate/wiki")
@@ -646,7 +646,7 @@ class MainWindow:
             command=lambda: open_url("https://github.com/Dadangdut33/Speech-Translate/wiki")
         )
         self.fm_help.add_command(
-            label="Visit Repository", command=lambda: open_url("https://github.com/Dadangdut33/Speech-Translate")
+            label="Visit Repository", command=lambda: open_url("https://github.com/RTBGG/Speech-Translate")
         )
         self.menubar.add_cascade(label="Help", menu=self.fm_help)
         self.fm_help.add_separator()
@@ -1671,7 +1671,7 @@ class MainWindow:
 
         assert model_tc is not None, (
             "model_tc is not set, this should not happened. " \
-            "Report this as a bug at https://github.com/Dadangdut33/Speech-Translate/issues"
+            "Report this as a bug at https://github.com/RTBGG/Speech-Translate/issues"
         )
 
         # check when using libre
@@ -1778,7 +1778,7 @@ class MainWindow:
 
             assert model_tc is not None, (
                 "model_tc is not set, this should not happened. " \
-                "Report this as a bug at https://github.com/Dadangdut33/Speech-Translate/issues"
+                "Report this as a bug at https://github.com/RTBGG/Speech-Translate/issues"
             )
 
             # check when using libre

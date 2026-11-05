@@ -133,7 +133,7 @@ class AboutWindow:
 
     # Open link
     def open_dl_link(self, _event=None):
-        open_url("https://github.com/Dadangdut33/Speech-Translate/releases/latest")
+        open_url("https://github.com/RTBGG/Speech-Translate/releases/latest")
 
     def check_for_update(self, _event=None, notify_up_to_date=False):
         if self.checking:
@@ -151,7 +151,7 @@ class AboutWindow:
 
         try:
             # request to github api, compare version. If not same tell user to update
-            req = get("https://api.github.com/repos/Dadangdut33/Speech-Translate/releases/latest", timeout=7)
+            req = get("https://api.github.com/repos/RTBGG/Speech-Translate/releases/latest", timeout=7)
 
             if req is not None and req.status_code == 200:
                 data = req.json()

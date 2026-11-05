@@ -15,8 +15,8 @@ def read_me():
 
 def install_requires():
     with open("requirements.txt", "r", encoding="utf-8") as f:
-        req = f.read().splitlines()
-        return req
+        req = [line.strip() for line in f.read().splitlines()]
+        return [line for line in req if line and not line.startswith(("#", "-"))]
 
 
 setup(
@@ -26,9 +26,9 @@ setup(
     " Interface made using Tkinter. Code written fully in Python.",
     long_description=read_me(),
     long_description_content_type="text/markdown",
-    python_requires=">=3.8",
-    author="Dadangdut33",
-    url="https://github.com/Dadangdut33/Speech-Translate",
+    python_requires=">=3.11",
+    author="Dadangdut33, RTBGG",
+    url="https://github.com/RTBGG/Speech-Translate",
     license="MIT",
     packages=find_packages(),
     install_requires=install_requires(),

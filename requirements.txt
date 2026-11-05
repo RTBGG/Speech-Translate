@@ -1,23 +1,26 @@
-torch==2.1.1
-torchaudio==2.1.1
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0
+torchaudio==2.11.0
 deep-translator==1.11.1
-notify-py==0.3.42
-loguru
-static-ffmpeg==2.5
-pillow==9.5.0
+notify-py==0.3.43
+loguru==0.6.0
+static-ffmpeg==3.0
+pillow==12.1.1
 pystray==0.19.5
-tkhtmlview==0.2.0
+tkhtmlview==0.3.2
 tksheet==6.2.9
-requests==2.31.0
-scipy==1.11.3
-sounddevice==0.4.6
-soundfile==0.12.1
-webrtcvad @ git+https://github.com/wiseman/py-webrtcvad.git@e283ca41df3a84b0e87fb1f5cb9b21580a286b09
+requests==2.34.2
+scipy==1.16.3
+sounddevice==0.5.6
+soundfile==0.14.0
+webrtcvad-wheels==2.0.14.post1
 darkdetect==0.8.0
-matplotlib==3.8.0
-onnxruntime==1.16.1
-demucs==4.0.1
-stable-ts @ git+https://github.com/jianfch/stable-ts.git@d51edb6ad86b06f4582f4c06fcf8a4b6dc8e0bca
-faster-whisper @ git+https://github.com/SYSTRAN/faster-whisper.git@44f7e589478866546bfcd1d105e254a74e2caad5
-PyAudioWPatch==0.2.12.6; platform_system == "Windows"
-PyAudio==0.2.13; platform_system != "Windows"
+matplotlib==3.10.8
+onnxruntime==1.23.2
+demucs==4.1.0
+openai-whisper==20250625
+stable-ts==2.19.1
+faster-whisper==1.2.1
+av==15.1.0  # faster-whisper 1.2.1 passes metadata_errors, removed in PyAV 16
+PyAudioWPatch==0.2.12.9; platform_system == "Windows"
+PyAudio==0.2.14; platform_system != "Windows"

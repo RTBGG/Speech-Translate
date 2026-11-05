@@ -277,7 +277,7 @@ def get_whisper_lang_similar(similar: str, debug: bool = True) -> str:
     else:
         raise ValueError(
             f"Fail to get whisper language from similar while searching for {similar}. "\
-            "Please report this as a bug to https://github.com/Dadangdut33/Speech-Translate/issues"
+            "Please report this as a bug to https://github.com/RTBGG/Speech-Translate/issues"
         )
 
 
@@ -332,6 +332,7 @@ TL_ENGINE_TARGET_DICT = {
     "🐌 Large V1 [10GB VRAM] (Most Accurate)": WHISPER_TARGET,
     "🐌 Large V2 [10GB VRAM] (Most Accurate)": WHISPER_TARGET,
     "🐌 Large V3 [10GB VRAM] (Most Accurate)": WHISPER_TARGET,
+    "🏎️ Large V3 Turbo [6GB VRAM] (Fast & Accurate)": WHISPER_TARGET,
     # selecting whisper as the tl engine
     # selecting TL API as the tl engine
     "Google Translate": GOOGLE_TARGET,
@@ -404,6 +405,7 @@ TL_ENGINE_SOURCE_DICT = {
     "🐌 Large V1 [10GB VRAM] (Most Accurate)": WHISPER_SOURCE,
     "🐌 Large V2 [10GB VRAM] (Most Accurate)": WHISPER_SOURCE,
     "🐌 Large V3 [10GB VRAM] (Most Accurate)": WHISPER_SOURCE_V3,  # only v3 has cantonese
+    "🏎️ Large V3 Turbo [6GB VRAM] (Fast & Accurate)": WHISPER_SOURCE_V3,
     # selecting TL API as the tl engine
     "Google Translate": GOOGLE_SOURCE,
     "LibreTranslate": LIBRE_SOURCE,

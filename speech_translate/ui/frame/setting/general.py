@@ -468,6 +468,10 @@ class SettingGeneral:
         self.model_large_v3 = ModelDownloadFrame(
             self.f_mod_whisper, "Large V3", lambda: self.model_btn_checker("large-v3", self.model_large_v3.btn)
         )
+        self.model_large_v3_turbo = ModelDownloadFrame(
+            self.f_mod_whisper, "Large V3 Turbo",
+            lambda: self.model_btn_checker("large-v3-turbo", self.model_large_v3_turbo.btn)
+        )
 
         self.model_faster_tiny = ModelDownloadFrame(
             self.f_mod_faster, "Tiny", lambda: self.model_btn_checker("tiny", self.model_faster_tiny.btn, True)
@@ -512,6 +516,10 @@ class SettingGeneral:
         )
         self.model_faster_large_v3 = ModelDownloadFrame(
             self.f_mod_faster, "Large V3", lambda: self.model_btn_checker("large-v3", self.model_faster_large_v3.btn, True)
+        )
+        self.model_faster_large_v3_turbo = ModelDownloadFrame(
+            self.f_mod_faster, "Large V3 Turbo",
+            lambda: self.model_btn_checker("large-v3-turbo", self.model_faster_large_v3_turbo.btn, True)
         )
 
         # ------------------ Functions ------------------
@@ -773,6 +781,7 @@ class SettingGeneral:
             def threaded_large_v3():
                 try:
                     self.model_btn_checker("large-v3", self.model_large_v3.btn)
+                    self.model_btn_checker("large-v3-turbo", self.model_large_v3_turbo.btn)
                 except Exception as e:
                     if "invalid command name" not in str(e):
                         logger.exception(e)
@@ -780,6 +789,7 @@ class SettingGeneral:
             def threaded_large_v3_fw():
                 try:
                     self.model_btn_checker("large-v3", self.model_faster_large_v3.btn, True)
+                    self.model_btn_checker("large-v3-turbo", self.model_faster_large_v3_turbo.btn, True)
                 except Exception as e:
                     if "invalid command name" not in str(e):
                         logger.exception(e)

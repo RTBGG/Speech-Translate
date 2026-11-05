@@ -485,18 +485,18 @@ def get_model(
             # same model for both transcribe and translate. Load only once
             logger.debug("Loading model for both transcribe and translate using faster-whisper | Load only once")
             model_tc = stable_whisper.load_faster_whisper(model_name_tc, **model_args)
-            stable_tc = model_tc.transcribe_stable  # type: ignore
+            stable_tc = model_tc.transcribe
             stable_tl = stable_tc
         else:
             if transcribe:  # if transcribe, load model for transcribe
                 logger.debug("Loading model for transcribe using faster-whisper")
                 model_tc = stable_whisper.load_faster_whisper(model_name_tc, **model_args)
-                stable_tc = model_tc.transcribe_stable  # type: ignore
+                stable_tc = model_tc.transcribe
 
             if translate and tl_engine_whisper:  # if translate using whisper, load model for translate
                 logger.debug("Loading model for translate using faster-whisper")
                 model_tl = stable_whisper.load_faster_whisper(engine, **model_args)
-                stable_tl = model_tl.transcribe_stable  # type: ignore
+                stable_tl = model_tl.transcribe
 
             # if translate and the engine is not using whisper,
             # load model for transcribe, but check first wether the model is already loaded or not
@@ -507,7 +507,7 @@ def get_model(
                     "model for transcribe is not loaded yet, loading model for transcribe"
                 )
                 model_tc = stable_whisper.load_faster_whisper(model_name_tc, **model_args)
-                stable_tc = model_tc.transcribe_stable  # type: ignore
+                stable_tc = model_tc.transcribe
     else:
         if transcribe and translate and model_name_tc == engine:
             # same model for both transcribe and translate. Load only once
@@ -535,7 +535,7 @@ def get_model(
                     "model for transcribe is not loaded yet, loading model for transcribe"
                 )
                 model_tc = stable_whisper.load_model(model_name_tc, **model_args)
-                stable_tc = model_tc.transcribe_stable
+                stable_tc = model_tc.transcribe
 
     load_to_tc_args = stable_tc if stable_tc is not None else stable_tl  # making sure that the load_to_tc_args is not None
 
