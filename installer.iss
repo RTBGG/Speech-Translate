@@ -36,6 +36,8 @@ OutputBaseFilename=Installer.SpeechTranslate.{#MyAppVersion}.CUDA
 SetupIconFile=speech_translate\assets\icon.ico
 Compression=lzma2/max
 SolidCompression=yes
+LZMANumBlockThreads=8
+LZMAUseSeparateProcess=yes
 WizardStyle=modern
 
 [Languages]

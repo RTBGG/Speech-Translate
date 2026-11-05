@@ -100,13 +100,14 @@ print(">> Copying some more files...")
 
 # we need to copy av.libs to foldername/lib because cx_freeze doesn't copy it for some reason
 print(">> Copying av.libs to lib folder")
-shutil.copytree(f"{get_env_name()}/Lib/site-packages/av.libs", f"{folder_name}/lib/av.libs")
+shutil.copytree(f"{get_env_name()}/Lib/site-packages/av.libs", f"{folder_name}/lib/av.libs", dirs_exist_ok=True)
 
 # we also need to copy openai_whisper-{version}.dist-info to foldername/lib because cx_freeze doesn't copy it
 print(">> Copying whisper metadata to lib folder")
 shutil.copytree(
     f"{get_env_name()}/Lib/site-packages/openai_whisper-{get_whisper_version()}.dist-info",
-    f"{folder_name}/lib/openai_whisper-{get_whisper_version()}.dist-info"
+    f"{folder_name}/lib/openai_whisper-{get_whisper_version()}.dist-info",
+    dirs_exist_ok=True,
 )
 
 # copy LICENSE as license.txt to build folder
